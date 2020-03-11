@@ -10,10 +10,9 @@ function [] = sum_nn(a, b, c)
         Yc{i}  = categorical(c(i, 1:m));
     end
     
-%     Yc = categorical
     [X_train, Y_train, X_test, Y_test] = mk_traintets(Xc, Yc);
     
-    numResponses = m;
+%     numResponses = m;
     featureDimension = 2;
     numHiddenUnits = 32;
     numClasses = 2;
@@ -27,11 +26,12 @@ function [] = sum_nn(a, b, c)
     
     options = trainingOptions('adam', ...
                             'MaxEpochs',100, ...
+                            'MiniBatchSize',1000, ...
                             'InitialLearnRate',0.01, ...
+                            'ValidationData',{X_test,Y_test},...
                             'Plots','training-progress',...
-                            'Verbose',0);
-                        
-                        
+                            'Verbose',1);
+                                             
    net = trainNetwork(X_train,Y_train,layers,options); 
    
 end
