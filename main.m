@@ -25,5 +25,7 @@ function [] = main(nn_type)
     switch(nn_type)
         case {'xor', 'and'}
             xorand_nn(a_bin, b_bin, c_bin);
+        case {'sum'}
+            sum_nn(a_bin, b_bin, c_bin);
     end 
 end
