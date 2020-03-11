@@ -22,6 +22,10 @@ function [] = main(nn_type)
             c_bin = bin2log(dec2bin(c_int,m_last));
     end
     
+    [a_bin, b_bin, c_bin] = deal(flip(a_bin,2),...
+                                 flip(b_bin,2),...
+                                 flip(c_bin,2));
+    
     switch(nn_type)
         case {'xor', 'and'}
             xorand_nn(a_bin, b_bin, c_bin);
